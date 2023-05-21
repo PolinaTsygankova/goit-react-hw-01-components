@@ -1,36 +1,44 @@
 import PropTypes from 'prop-types';
+import {
+  ProfileCard,
+  Photo,
+  Text,
+  List,
+  ListItem,
+  Label,
+} from './Profile.styled';
 
 export function Profile({ username, tag, location, avatar, stats }) {
   return (
-    <div className="profile">
+    <ProfileCard>
       <div className="description">
-        <img src={avatar} alt="User avatar" className="avatar" />
-        <p className="name">{username}</p>
-        <p className="tag">@{tag}</p>
-        <p className="location">{location}</p>
+        <Photo src={avatar} alt="User avatar" />
+        <Text>{username}</Text>
+        <Text>@{tag}</Text>
+        <Text>{location}</Text>
       </div>
-      <ul className="stats">
-        <li>
-          <span className="label">Followers</span>
-          <span className="quantity">{stats.followers}</span>
-        </li>
-        <li>
-          <span className="label">Views</span>
-          <span className="quantity">{stats.views}</span>
-        </li>
-        <li>
-          <span className="label">Likes</span>
-          <span className="quantity">{stats.likes}</span>
-        </li>
-      </ul>
-    </div>
+      <List>
+        <ListItem>
+          <Label>Followers</Label>
+          <span>{stats.followers}</span>
+        </ListItem>
+        <ListItem>
+          <Label>Views</Label>
+          <span>{stats.views}</span>
+        </ListItem>
+        <ListItem>
+          <Label>Likes</Label>
+          <span>{stats.likes}</span>
+        </ListItem>
+      </List>
+    </ProfileCard>
   );
 }
 
 Profile.propTypes = {
-  username: PropTypes.string,
-  tag: PropTypes.string,
-  location: PropTypes.string,
-  avatar: PropTypes.string,
+  username: PropTypes.string.isRequired,
+  tag: PropTypes.string.isRequired,
+  location: PropTypes.string.isRequired,
+  avatar: PropTypes.string.isRequired,
   stats: PropTypes.objectOf(PropTypes.number),
 };

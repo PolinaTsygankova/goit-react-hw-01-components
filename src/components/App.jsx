@@ -6,21 +6,30 @@ import { Profile } from './Profile/Profile';
 import { Statistics } from './Statistics/Statistics';
 import { FriendList } from './FriendList/FriendList';
 
+import { Title } from './App.styled';
+
 export const App = () => {
   return (
     <>
-      <p>Task 1:</p>
+      <Title>Task 1:</Title>
       <Profile
-        username={user.dataname}
+        username={user.username}
         tag={user.tag}
         location={user.location}
         avatar={user.avatar}
         stats={user.stats}
       />
 
-      <p>Task 2:</p>
+      <Title>Task 2:</Title>
       <Statistics title="Upload stats" stats={data} />
-      <FriendList />
+
+      <Title>Task 3:</Title>
+      <FriendList friends={friends} />
+      {/* <FriendList
+        name={friends.name}
+        avatar={friends.avatar}
+        isOnline={friends.isOnline}
+      /> */}
     </>
   );
 };
